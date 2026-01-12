@@ -6,6 +6,8 @@ class_name Player
 
 var transitioning := false
 
+@onready var rocket_audio: AudioStreamPlayer3D = $RocketAudio
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -16,6 +18,10 @@ func _process(delta: float) -> void:
 	if not transitioning:
 		if Input.is_action_pressed("boost"):
 			apply_central_force(basis.y * delta * thrust)
+			if not rocket_audio.is_playing():
+				rocket_audio.play()
+		else:
+			rocket_audio.stop()
 			
 		if Input.is_action_pressed("rotate_left"):
 			apply_torque(Vector3(0.0, 0.0, delta*torque_thrust))
