@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxnhmgd6nak3d"]
+[gd_scene load_steps=11 format=3 uid="uid://cxnhmgd6nak3d"]
 
 [ext_resource type="Script" uid="uid://dvn4q2fd6ablf" path="res://Player/player.gd" id="1_l8h54"]
 [ext_resource type="AudioStream" uid="uid://4kkyi2c4npgd" path="res://assets/SFX - Death Explosion.ogg" id="2_btcbx"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ux6ivcx1ovdp" path="res://assets/booster_particles.tscn" id="5_k53q1"]
 [ext_resource type="PackedScene" uid="uid://6aevcb4xq1dc" path="res://Particles/explosion_particles.tscn" id="6_fhl08"]
 [ext_resource type="PackedScene" uid="uid://bmpfd0ctsfum7" path="res://Particles/success_particles.tscn" id="7_vtle1"]
+[ext_resource type="PackedScene" uid="uid://5q3bfx7vxioe" path="res://Player/ship.tscn" id="8_od3ui"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_btcbx"]
 
@@ -23,6 +24,7 @@ angular_damp = 3.0
 script = ExtResource("1_l8h54")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CylinderMesh_btcbx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -52,5 +54,8 @@ emitting = false
 [node name="ExplosionParticles" parent="." instance=ExtResource("6_fhl08")]
 
 [node name="SuccessParticles" parent="." instance=ExtResource("7_vtle1")]
+
+[node name="Ship" parent="." instance=ExtResource("8_od3ui")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22377455, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

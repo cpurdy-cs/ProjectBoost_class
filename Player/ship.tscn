@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://5q3bfx7vxioe"]
+
+[ext_resource type="Material" uid="uid://cstgwuw4no67s" path="res://Player/ship_color.tres" id="1_pk3oa"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vtle1"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_00tjw"]
+top_radius = 0.1
+bottom_radius = 0.15
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_od3ui"]
+top_radius = 0.0
+bottom_radius = 0.2
+height = 0.5
+
+[node name="Body" type="MeshInstance3D"]
+material_override = ExtResource("1_pk3oa")
+mesh = SubResource("CylinderMesh_vtle1")
+
+[node name="Body2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.9745777, -0.22404964, 0, 0.22404964, 0.9745777, 0, 0, 0, 1, 0.17607963, -0.48762596, 0)
+mesh = SubResource("CylinderMesh_00tjw")
+skeleton = NodePath("../..")
+
+[node name="Body3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.92451274, 0.38115102, 0, -0.38115102, 0.92451274, 0, 0, 0, 1, -0.22333291, -0.48762596, 0)
+mesh = SubResource("CylinderMesh_00tjw")
+skeleton = NodePath("../..")
+
+[node name="Cockpit" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9980319, 0)
+mesh = SubResource("CylinderMesh_od3ui")
+skeleton = NodePath("../..")
