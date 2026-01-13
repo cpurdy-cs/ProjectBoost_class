@@ -12,6 +12,8 @@ var transitioning := false
 @onready var main_booster: GPUParticles3D = $MainBooster
 @onready var right_booster: GPUParticles3D = $RightBooster
 @onready var left_booster: GPUParticles3D = $LeftBooster
+@onready var explosion_particles: GPUParticles3D = $ExplosionParticles
+@onready var success_particles: GPUParticles3D = $SuccessParticles
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -52,6 +54,7 @@ func crash_sequence() -> void:
 	main_booster.emitting = false
 	right_booster.emitting = false
 	left_booster.emitting = false
+	explosion_particles.emitting = true
 	explosion_audio.play()
 	await get_tree().create_timer(2.5).timeout
 	get_tree().reload_current_scene.call_deferred()
@@ -63,6 +66,7 @@ func level_complete(next_level_file) -> void:
 	right_booster.emitting = false
 	left_booster.emitting = false
 	success_audio.play()
+	success_particles.emitting = true
 	await get_tree().create_timer(2.5).timeout
 	get_tree().change_scene_to_file.call_deferred(next_level_file)
 	
