@@ -7,6 +7,8 @@ class_name Player
 var transitioning := false
 
 @onready var rocket_audio: AudioStreamPlayer3D = $RocketAudio
+@onready var explosion_audio: AudioStreamPlayer = $ExplosionAudio
+@onready var success_audio: AudioStreamPlayer = $SuccessAudio
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -33,12 +35,14 @@ func _process(delta: float) -> void:
 func crash_sequence() -> void:
 	transitioning = true
 	print("Kaboom!")
-	await get_tree().create_timer(1).timeout
+	explosion_audio.play()
+	await get_tree().create_timer(2.5).timeout
 	get_tree().reload_current_scene.call_deferred()
 	
 func level_complete(next_level_file) -> void:
 	transitioning = true
-	await get_tree().create_timer(1).timeout
+	success_audio.play()
+	await get_tree().create_timer(2.5).timeout
 	get_tree().change_scene_to_file.call_deferred(next_level_file)
 	
 func _on_body_entered(body: Node) -> void:
