@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://4kkyi2c4npgd" path="res://assets/SFX - Death Explosion.ogg" id="2_btcbx"]
 [ext_resource type="AudioStream" uid="uid://b8wtij3ox4uln" path="res://assets/SFX - Main engine thrust.ogg" id="3_gwnis"]
 [ext_resource type="AudioStream" uid="uid://i2fw7r27uas0" path="res://assets/SFX - Success.ogg" id="3_k53q1"]
-[ext_resource type="PackedScene" uid="uid://ux6ivcx1ovdp" path="res://assets/booster_particles.tscn" id="5_k53q1"]
+[ext_resource type="PackedScene" path="res://assets/booster_particles.tscn" id="5_k53q1"]
 [ext_resource type="PackedScene" uid="uid://6aevcb4xq1dc" path="res://Particles/explosion_particles.tscn" id="6_fhl08"]
 [ext_resource type="PackedScene" uid="uid://bmpfd0ctsfum7" path="res://Particles/success_particles.tscn" id="7_vtle1"]
 [ext_resource type="PackedScene" uid="uid://5q3bfx7vxioe" path="res://Player/ship.tscn" id="8_od3ui"]

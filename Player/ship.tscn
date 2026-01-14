@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://5q3bfx7vxioe"]
+[gd_scene load_steps=11 format=3 uid="uid://5q3bfx7vxioe"]
 
 [ext_resource type="Material" uid="uid://cstgwuw4no67s" path="res://Player/ship_color.tres" id="1_pk3oa"]
 
@@ -17,17 +17,49 @@ top_radius = 0.0
 bottom_radius = 0.2
 height = 0.5
 
+[sub_resource type="TorusMesh" id="TorusMesh_pk3oa"]
+inner_radius = 0.2
+outer_radius = 0.4
+
+[sub_resource type="TorusMesh" id="TorusMesh_63qlp"]
+inner_radius = 0.2
+outer_radius = 0.3
+
+[sub_resource type="TorusMesh" id="TorusMesh_yypwu"]
+inner_radius = 0.2
+outer_radius = 0.35
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pk3oa"]
+albedo_color = Color(0.25500003, 0.7111668, 0.85, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_pk3oa"]
+radius = 0.05
+height = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_pk3oa"]
+size = Vector3(0.3, 0.3, 0.02)
+
 [node name="Body" type="MeshInstance3D"]
 material_override = ExtResource("1_pk3oa")
 mesh = SubResource("CylinderMesh_vtle1")
 
 [node name="Body2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.9745777, -0.22404964, 0, 0.22404964, 0.9745777, 0, 0, 0, 1, 0.17607963, -0.48762596, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, -0.5, 0)
 mesh = SubResource("CylinderMesh_00tjw")
 skeleton = NodePath("../..")
 
 [node name="Body3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.92451274, 0.38115102, 0, -0.38115102, 0.92451274, 0, 0, 0, 1, -0.22333291, -0.48762596, 0)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -0.3, -0.5, 0)
+mesh = SubResource("CylinderMesh_00tjw")
+skeleton = NodePath("../..")
+
+[node name="Body4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, -0.5, 0.3)
+mesh = SubResource("CylinderMesh_00tjw")
+skeleton = NodePath("../..")
+
+[node name="Body5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, 0, -0.5, -0.3)
 mesh = SubResource("CylinderMesh_00tjw")
 skeleton = NodePath("../..")
 
@@ -35,3 +67,28 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9980319, 0)
 mesh = SubResource("CylinderMesh_od3ui")
 skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.22428408, 0)
+mesh = SubResource("TorusMesh_pk3oa")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04585153, 0)
+mesh = SubResource("TorusMesh_63qlp")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.06729767, 0)
+mesh = SubResource("TorusMesh_yypwu")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5572032, 0.19360048)
+material_override = SubResource("StandardMaterial3D_pk3oa")
+mesh = SubResource("CapsuleMesh_pk3oa")
+
+[node name="rightwing" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4087447, 0.9126487, 0, -0.9126487, 0.4087447, 0, 0, 0, 1, 0.12678465, 0.37316355, 0)
+mesh = SubResource("BoxMesh_pk3oa")
+
+[node name="leftwing" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.9198215, -0.39233705, 0, 0.39233705, -0.9198215, 0, 0, 0, 1, -0.12148079, 0.37316355, 0)
+mesh = SubResource("BoxMesh_pk3oa")

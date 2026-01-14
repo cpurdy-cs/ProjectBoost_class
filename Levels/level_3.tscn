@@ -1,25 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpfbf4ta00rim"]
+[gd_scene load_steps=8 format=3 uid="uid://bpfbf4ta00rim"]
 
 [ext_resource type="Script" uid="uid://gli40wmvb504" path="res://Levels/landing_pad.gd" id="1_5lru4"]
+[ext_resource type="PackedScene" uid="uid://bd7wvp85exf4o" path="res://UI/ui.tscn" id="1_padch"]
 [ext_resource type="PackedScene" uid="uid://cxnhmgd6nak3d" path="res://Player/player.tscn" id="2_ej5lj"]
 [ext_resource type="PackedScene" uid="uid://c7vphr0r6unpa" path="res://Levels/moving_obstacle.tscn" id="3_ej5lj"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_54b6e"]
-sky_top_color = Color(0.405035, 0.74444485, 0.9380853, 1)
-sky_horizon_color = Color(0.867236, 0.94433844, 0.98374856, 1)
-ground_horizon_color = Color(0.867236, 0.94433844, 0.98374856, 1)
-
-[sub_resource type="Sky" id="Sky_s41d2"]
-sky_material = SubResource("ProceduralSkyMaterial_54b6e")
-
-[sub_resource type="Environment" id="Environment_gtnvv"]
-background_mode = 2
-sky = SubResource("Sky_s41d2")
-tonemap_mode = 2
-glow_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_54b6e"]
-albedo_color = Color(0.47, 0.26382667, 0.0282, 1)
+[ext_resource type="PackedScene" uid="uid://ctoyiaswpjje4" path="res://Levels/floor.tscn" id="4_absw3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s41d2"]
 albedo_color = Color(0, 0.54163784, 0.9607387, 1)
@@ -29,18 +14,7 @@ albedo_color = Color(3.9948522e-06, 0.768577, 0.052221872, 1)
 
 [node name="Level" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_gtnvv")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.89100647, -0.45399058, -1.9844558e-08, 0, -4.371139e-08, 1, -0.45399058, 0.89100647, 3.8947128e-08, 0, 0, 0)
-shadow_enabled = true
-
-[node name="Floor" type="CSGBox3D" parent="." groups=["Hazard"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
-use_collision = true
-size = Vector3(30, 8, 5)
-material = SubResource("StandardMaterial3D_54b6e")
+[node name="UI" parent="." instance=ExtResource("1_padch")]
 
 [node name="LaunchPad" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 0, 0)
@@ -64,3 +38,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1.224, 0)
 
 [node name="MovingObstacle" parent="." instance=ExtResource("3_ej5lj")]
 duration = 3.0
+
+[node name="Floor2" parent="." instance=ExtResource("4_absw3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)

@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://nn1epjbnb5wl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vtle1"]
+albedo_color = Color(1, 0.4627451, 0.03137255, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_x3vf3"]
+material = SubResource("StandardMaterial3D_vtle1")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_apopc"]
+albedo_color = Color(0.841792, 0.38522112, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5htga"]
+material = SubResource("StandardMaterial3D_apopc")
+top_radius = 0.0
+bottom_radius = 0.2
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_od3ui"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vtle1"]
+top_radius = 0.0
+bottom_radius = 0.2
+height = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_00tjw"]
+top_radius = 0.0
+bottom_radius = 0.3
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p5o4e"]
+albedo_color = Color(0.88421315, 0.40592238, 7.70092e-07, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gu6f8"]
+material = SubResource("StandardMaterial3D_p5o4e")
+top_radius = 0.0
+bottom_radius = 0.3
+height = 0.5
+
+[node name="body" type="MeshInstance3D"]
+mesh = SubResource("CylinderMesh_x3vf3")
+
+[node name="cockpit" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0004557, 0)
+mesh = SubResource("CylinderMesh_5htga")
+skeleton = NodePath("../..")
+
+[node name="stage2A" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.32, -0.3, 0)
+mesh = SubResource("CylinderMesh_od3ui")
+skeleton = NodePath("../..")
+
+[node name="cone1" type="MeshInstance3D" parent="stage2A"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0004557, 0)
+mesh = SubResource("CylinderMesh_vtle1")
+skeleton = NodePath("../../..")
+
+[node name="cone2" type="MeshInstance3D" parent="stage2A"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.5761159, 0)
+mesh = SubResource("CylinderMesh_00tjw")
+skeleton = NodePath("../../..")
+
+[node name="stage2A2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.32, -0.3, 0)
+mesh = SubResource("CylinderMesh_od3ui")
+skeleton = NodePath("../..")
+
+[node name="cone1" type="MeshInstance3D" parent="stage2A2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0004557, 0)
+mesh = SubResource("CylinderMesh_vtle1")
+skeleton = NodePath("../../..")
+
+[node name="cone2" type="MeshInstance3D" parent="stage2A2"]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.5761159, 0)
+mesh = SubResource("CylinderMesh_00tjw")
+skeleton = NodePath("../../..")
+
+[node name="cone2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.5445888, 0)
+mesh = SubResource("CylinderMesh_gu6f8")
+skeleton = NodePath("../../..")

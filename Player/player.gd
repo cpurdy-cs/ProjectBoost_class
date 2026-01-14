@@ -3,6 +3,7 @@ class_name Player
 
 @export_range(750,2500) var thrust := 1000.0
 @export var torque_thrust := 100.0
+@export var starting_fuel := 100
 
 var transitioning := false
 
@@ -15,15 +16,24 @@ var transitioning := false
 @onready var explosion_particles: GPUParticles3D = $ExplosionParticles
 @onready var success_particles: GPUParticles3D = $SuccessParticles
 
+var ui : CanvasLayer
+
+var fuel : int:
+	set(new_fuel):
+		fuel = new_fuel
+		ui.update_fuel(new_fuel)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	ui = get_tree().get_first_node_in_group("ui")
+	fuel = starting_fuel
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not transitioning:
-		if Input.is_action_pressed("boost"):
+		if Input.is_action_pressed("boost") and fuel > 0:
+			fuel -= 0.5
 			apply_central_force(basis.y * delta * thrust)
 			main_booster.emitting = true
 			if not rocket_audio.is_playing():
